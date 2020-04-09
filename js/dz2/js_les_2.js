@@ -9,7 +9,7 @@ window.onload=function (event) {
     statusLine=document.querySelector(".status");
     console.log(newgame.getSecretNumber());
     leftAttempt.textContent=newgame.leftAttempt;
-    
+
         play.addEventListener("click", function(event){
                 if (newgame.getLeftAttempt()>0) {
                     switch(newgame.playStep(inputNumber.value)) {
@@ -32,7 +32,7 @@ window.onload=function (event) {
                             break;
                     }
                 } else {
-                    statusLine.textContent="вы проиграли, было загадано число:"+newgame.getSecretNumber();
+                    statusLine.textContent="у вас закончились попытки и вы проиграли, было загадано число:"+newgame.getSecretNumber();
                 }
 
             }

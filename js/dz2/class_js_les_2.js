@@ -1,21 +1,18 @@
 class Game {
-        max;
-        min;
-
   constructor(max, min, count) {
-      if (Game.isInteger(max)) {
+      if (Number.isInteger(max)) {
           this.max=max;
       }
       else {
           stop();
       }
-      if (Game.isInteger(min)) {
+      if (Number.isInteger(min)) {
           this.min=min;
       }
       else {
           stop();
       }
-      if (Game.isInteger(count)) {
+      if (Number.isInteger(count)) {
           this.maxAttempt=count;
           this.leftAttempt=count;
       }
@@ -24,9 +21,7 @@ class Game {
       }
       this.secretNumber=this.generateSecretNumber(this.min, this.max);
   }
-  static isInteger(num) {
-        return (num ^ 0) === num;
-    }
+
   getMaxAttempt() {
       return this.maxAttempt;
   }
@@ -47,11 +42,6 @@ class Game {
   }
   generateSecretNumber(min,max) {
       return (parseInt(Math.random()*(max-min))+min);
-  }
-  testInteger(inputText) {
-      if (this.isInteger(inputText)) {
-          return inputText;
-      }
   }
   playStep(inputText) {
     if (inputText>=this.min && inputText<=this.max) {
