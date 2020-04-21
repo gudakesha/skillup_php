@@ -1,0 +1,25 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+}
+body {
+    margin: 0px; padding: 0px;
+    font-family: Verdana, sans-serif, Tahoma, Arial, Helvetica;
+}
+div {
+    margin: 0px;
+    padding: 0px;
+}
+span {
+    margin: 0px;
+    padding: 0px;
+}
+.leftTime {
+    color:green;
+    font-weight: bold;
+}
+.leftTime.littleTime{
+    color: red;
+}
+

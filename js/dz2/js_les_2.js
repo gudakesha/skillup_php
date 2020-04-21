@@ -1,3 +1,5 @@
+
+
 window.onload=function (event) {
     newgame= new Game(100,0,10);
     document.querySelector("#min").textContent=newgame.getMin();
