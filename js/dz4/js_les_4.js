@@ -11,8 +11,8 @@ $(document).ready(function(event) {
 
     button.on('click',function () {
 
-        xhr = new window.XMLHttpRequest();
-        xhr.open('POST', 'post.php', true);
+        xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://www.google.com/', true);
 
         let data= {
             [name.attr('name')]: name.val(),
@@ -22,19 +22,27 @@ $(document).ready(function(event) {
             [login.attr('name')]: login.val(),
             [password.attr('name')]: password.val(),
         };
-        /* или так
+        /* так рошще но мы так еще не учили
         let data= {};
         $('#userForm').find('input').each(function() {
              $data[this.name] = $(this).val();
          });
          */
+        let sendData = JSON.stringify(data);
 
-        xhr.send(data);
+        xhr.send(sendData);
 
-        xhr.onerror = (error) => {
-            console.log("Ошибка отправки")
+        xhr.onloadend = (user) => {
+            console.log("Загрузка окончена");
         };
-        
+        xhr.onprogress = (progress) => {
+            console.log("Идет загрузка");
+        };
+        xhr.onerror = (error) => {
+            console.log("Ошибка отправки");
+        };
+
+
     });
 });
 
