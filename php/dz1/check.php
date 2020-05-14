@@ -1,30 +1,35 @@
 <?php
-$postArr=array("price","count","id");
+$fieldArr=array("price","count","id");
 
 if (!$_POST) {
     exit("Sorry, no data");
 } else {
     $postArrIn=$_POST['cartData'];
-    $price=(int) $postArrIn['price'];
-    $count=(int) $postArrIn['count'];
-    $id=$postArrIn['id'];
-    //var_dump($postArrIn['id']);
-    if ($price>0 || is_int($count)) {
-        $totalprice=$price*$count;
+    foreach ($fieldArr as $key=>$value) {
+        if (isset($postArrIn[$value])) {
+            $postArr[$value]=$postArrIn[$value];
+        }
+        else {
+            exit("some data is lost!");
+        }
     }
-    else exit("Wrong data!");
+
+    $postArr['price']=(int) $postArr['price'];
+    $postArr['count']=(int) $postArr['count'];
+    if ($postArr['price']>0 && $postArr['count']>0) {
+        $postArr['totalprice']=$postArr['price']*$postArr['count'];
+    }
+    else {
+        exit("Wrong data!");
+    }
     $data= [
-        'totalprice'=>$totalprice,
-        'count'=>$count,
-        'price'=>$price,
-        'id'=>$id
+        'totalprice'=>$postArr['totalprice'],
+        'count'=>$postArr['count'],
+        'price'=>$postArr['price'],
+        'id'=>$postArr['id']
     ];
     $response=json_encode($data);
-    //foreach($_POST as $key=>$value) {
-    //    if (isset($postArr[$key])) {
-    //        $data[$postArr[$key]]=$value;
-    //    }
-    //}
+
   //  var_dump($data);
     echo $response;
     exit;
